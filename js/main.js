@@ -129,13 +129,3 @@ async function doJb() {
     //mem.free_all();
   }
 }
-document.addEventListener("DOMContentLoaded", function() {
-    const jbButton = document.getElementById('jeilbrek');
-    if (jbButton) {
-        jbButton.addEventListener('click', function() {
-            const checkedKernel = document.querySelector('input[name="kernel"]:checked');
-            window.exploitChain = checkedKernel ? checkedKernel.value : "lapse";
-            doJb();
-        });
-    }
-});
