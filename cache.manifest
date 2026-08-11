@@ -1,5 +1,5 @@
 CACHE MANIFEST 
-# Version 1.0
+# Version 1.1
 
 CACHE:
 index.html
@@ -7,6 +7,14 @@ css/style.css
 img/cat.jpg
 js/main.js
 js/script.js
+src/misc.js
+src/loader.js
+src/workers.js
+src/ps4/constants.js
+src/ps4/userland.js
+src/ps4/kernel.js
+src/ps4/patches/kp_900.bin
+src/payload.bin
 
 NETWORK:
 *
