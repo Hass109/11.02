@@ -1,132 +1,127 @@
 /* ==========================================================
-   MODERN CLASSIC GLOW THEME (TV & LEGACY BROWSER COMPATIBLE)
+   MODERN CLASSIC GLOW THEME
    ========================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    color: #ffffff;
-    background: #050505;
-    overflow-x: hidden;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    /* منع تحديد النصوص أثناء التنقل بالريموت أو الذراع */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+body{
+    font-family:'Poppins',sans-serif;
+    color:#ffffff;
+    background:#050505;
+    overflow-x:hidden;
+    text-align:center;
+    padding:20px;
+    position:relative;
 }
 
-/* Animated Background (Legacy Fallback Included) */
+/* Animated Background */
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
     background:
-        radial-gradient(circle at 20% 20%, rgba(0, 180, 255, .18), transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(0, 100, 255, .18), transparent 35%),
-        radial-gradient(circle at 50% 50%, rgba(0, 255, 255, .08), transparent 45%);
-    -webkit-animation: bgMove 12s ease-in-out infinite alternate;
-    animation: bgMove 12s ease-in-out infinite alternate;
-    will-change: transform;
-    z-index: -2;
+    radial-gradient(circle at 20% 20%,rgba(0,180,255,.18),transparent 30%),
+    radial-gradient(circle at 80% 70%,rgba(0,100,255,.18),transparent 35%),
+    radial-gradient(circle at 50% 50%,rgba(0,255,255,.08),transparent 45%);
+    animation:bgMove 12s ease-in-out infinite alternate;
+    z-index:-2;
 }
 
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
     background:
-        linear-gradient(rgba(255, 255, 255, .015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, .015) 1px, transparent 1px);
-    background-size: 40px 40px;
-    z-index: -1;
+    linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+    background-size:40px 40px;
+    z-index:-1;
 }
 
-@-webkit-keyframes bgMove {
-    from { -webkit-transform: scale(1) rotate(0deg); }
-    to { -webkit-transform: scale(1.15) rotate(3deg); }
-}
-
-@keyframes bgMove {
-    from { transform: scale(1) rotate(0deg); }
-    to { transform: scale(1.15) rotate(3deg); }
+@keyframes bgMove{
+    from{
+        transform:scale(1) rotate(0deg);
+    }
+    to{
+        transform:scale(1.15) rotate(3deg);
+    }
 }
 
 /* Titles */
 
-h1 {
-    font-size: 40px;
-    margin-bottom: 8px;
-    color: #fff;
+h1{
+    font-size:40px;
+    margin-bottom:8px;
+    color:#fff;
     text-shadow:
+    0 0 5px #00bfff,
+    0 0 15px #008cff,
+    0 0 30px #0066ff;
+
+    animation:glow 2.5s infinite alternate;
+}
+
+h3{
+    color:#c5c5c5;
+    font-size:15px;
+    margin-bottom:20px;
+}
+
+@keyframes glow{
+
+    from{
+        text-shadow:
         0 0 5px #00bfff,
-        0 0 15px #008cff,
-        0 0 30px #0066ff;
-    -webkit-animation: glow 2.5s infinite alternate;
-    animation: glow 2.5s infinite alternate;
+        0 0 15px #008cff;
+    }
+
+    to{
+        text-shadow:
+        0 0 10px #00ffff,
+        0 0 25px #00aaff,
+        0 0 40px #0055ff;
+    }
+
 }
 
-h3 {
-    color: #c5c5c5;
-    font-size: 15px;
-    margin-bottom: 20px;
-}
+hr{
 
-@-webkit-keyframes glow {
-    from { text-shadow: 0 0 5px #00bfff, 0 0 15px #008cff; }
-    to { text-shadow: 0 0 10px #00ffff, 0 0 25px #00aaff, 0 0 40px #0055ff; }
-}
+    border:none;
+    height:2px;
+    width:95%;
+    margin:25px auto;
 
-@keyframes glow {
-    from { text-shadow: 0 0 5px #00bfff, 0 0 15px #008cff; }
-    to { text-shadow: 0 0 10px #00ffff, 0 0 25px #00aaff, 0 0 40px #0055ff; }
-}
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    #00bfff,
+    #ffffff,
+    #00bfff,
+    transparent);
 
-hr {
-    border: none;
-    height: 2px;
-    width: 95%;
-    margin: 25px auto;
-    background: -webkit-linear-gradient(left, transparent, #00bfff, #ffffff, #00bfff, transparent);
-    background: linear-gradient(90deg, transparent, #00bfff, #ffffff, #00bfff, transparent);
 }
 
 /* Layout */
 
-.main-layout {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    gap: 25px;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+.main-layout{
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:25px;
+    flex-wrap:wrap;
+
 }
 
-/* Media Box */
+/* Media */
 
 .media-box {
     width: 320px;
@@ -172,43 +167,64 @@ hr {
 
 /* Console */
 
-#console {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    min-width: 300px;
-    max-width: 100%;
-    height: 340px;
-    background: #000;
-    color: #00ff80;
-    font-family: Consolas, monospace;
-    text-align: left;
-    padding: 18px;
-    overflow-y: auto;
-    border-radius: 18px;
-    border: 1px solid #00aaff;
+#console{
+
+    flex:1;
+
+    min-width:520px;
+
+    height:340px;
+
+    background:#000;
+
+    color:#00ff80;
+
+    font-family:Consolas,monospace;
+
+    text-align:left;
+
+    padding:18px;
+
+    overflow-y:auto;
+
+    border-radius:18px;
+
+    border:1px solid #00aaff;
+
     box-shadow:
-        inset 0 0 15px rgba(0, 255, 120, .15),
-        0 0 25px rgba(0, 170, 255, .25);
+
+    inset 0 0 15px rgba(0,255,120,.15),
+
+    0 0 25px rgba(0,170,255,.25);
+
 }
 
-#console::-webkit-scrollbar {
-    width: 10px;
+#console::-webkit-scrollbar{
+
+    width:10px;
+
 }
 
-#console::-webkit-scrollbar-thumb {
-    background: #008cff;
-    border-radius: 20px;
+#console::-webkit-scrollbar-thumb{
+
+    background:#008cff;
+
+    border-radius:20px;
+
 }
 
-#console::-webkit-scrollbar-track {
-    background: #111;
+#console::-webkit-scrollbar-track{
+
+    background:#111;
+
 }
 
-/* Buttons & Focus States for TV Navigation */
+/* Buttons */
 
-.btn-container {
-    margin: 30px 0;
+.btn-container{
+
+    margin:30px 0;
+
 }
 
 button {
@@ -262,138 +278,109 @@ button:active {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-5px); } /* تقليل المسافة قليلاً */
 }
+/* Radio */
 
-/* Radio Option Styling & Focus */
+#kernel-options{
 
-#kernel-options {
-    margin-bottom: 20px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    gap: 15px;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    margin-bottom:20px;
+
 }
 
-label {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 8px;
-    border: 1px solid transparent;
+label{
+
+    margin:0 10px;
+
 }
 
-label:has(input:focus),
-label:focus-within {
-    border-color: #00ffff;
-    background: rgba(0, 195, 255, 0.1);
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+input[type="radio"]{
+
+    appearance:none;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    border:2px solid #666;
+
+    background:#111;
+
+    cursor:pointer;
+
+    transition:.3s;
+
 }
 
-input[type="radio"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid #666;
-    background: #111;
-    cursor: pointer;
-    outline: none;
-    -webkit-transition: all .3s;
-    transition: all .3s;
-}
+input[type="radio"]:checked{
 
-input[type="radio"]:checked {
-    border-color: #00c3ff;
-    background: #00c3ff;
+    background:#00c3ff;
+
+    border-color:#00c3ff;
+
     box-shadow:
-        inset 0 0 0 4px #111,
-        0 0 10px #00c3ff,
-        0 0 20px #00c3ff;
+
+    0 0 10px #00c3ff,
+
+    0 0 20px #00c3ff;
+
 }
 
-input[type="radio"]:focus {
-    border-color: #00ffff;
-    box-shadow:
-        inset 0 0 0 4px #111,
-        0 0 15px #00ffff,
-        0 0 25px #00ffff;
+/* Floating Glow */
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-5px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
 }
 
-/* Floating Animation */
+.media-box,
+button{
 
-@-webkit-keyframes float {
-    0%, 100% { -webkit-transform: translateY(0px); }
-    50% { -webkit-transform: translateY(-6px); }
+    animation:float 4s ease-in-out infinite;
+
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
+/* Responsive */
+
+@media(max-width:900px){
+
+.main-layout{
+
+flex-direction:column;
+
+align-items:center;
+
 }
 
-/* ==========================================================
-   SPECIAL MEDIA QUERIES (TV & PS4 BIG SCREEN)
-   ========================================================== */
+.media-box{
 
-/* شاشات التلفزيون الكبيرة / دقة 1080p و 4K */
-@media television, (min-width: 1280px) and (min-device-pixel-ratio: 1) {
-    h1 {
-        font-size: 48px;
-    }
+width:100%;
+max-width:420px;
 
-    h3 {
-        font-size: 18px;
-    }
-
-    button {
-        padding: 18px 54px;
-        font-size: 22px;
-    }
-
-    .media-box {
-        width: 380px;
-    }
-
-    #console {
-        height: 400px;
-        font-size: 16px;
-    }
 }
 
-/* الشاشات الصغيرة / الهواتف */
-@media (max-width: 900px) {
-    .main-layout {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
+#console{
 
-    .media-box {
-        width: 100%;
-        max-width: 420px;
-    }
+min-width:100%;
+width:100%;
 
-    #console {
-        min-width: 100%;
-        width: 100%;
-    }
+}
+
 }
