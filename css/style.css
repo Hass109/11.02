@@ -135,31 +135,39 @@ hr {
     border-radius: 18px;
     padding: 15px;
     box-shadow: 0 0 20px rgba(0, 180, 255, .15);
-    -webkit-transition: box-shadow .35s, -webkit-transform .35s;
-    transition: box-shadow .35s, transform .35s;
+    /* سلاسة أكبر في الانتقال */
+    -webkit-transition: box-shadow 0.3s ease, -webkit-transform 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    /* إضافة البادئات للأنيميشن */
     -webkit-animation: float 4s ease-in-out infinite;
     animation: float 4s ease-in-out infinite;
+    /* تحجيم الأداء */
+    will-change: transform;
 }
 
-.media-box:hover {
+.media-box:hover,
+.media-box:focus {
     box-shadow: 0 0 35px rgba(0, 180, 255, .55);
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused;
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px);
+    /* الحل الجذري: إيقاف الحركة المستمرة تماماً عند التفاعل */
+    -webkit-animation-play-state: paused !important;
+    animation-play-state: paused !important;
+    /* رفع العنصر قليلاً بشكل ثابت */
+    -webkit-transform: translateY(-8px) !important;
+    transform: translateY(-8px) !important;
 }
 
 .media-box img {
     width: 100%;
     display: block;
     border-radius: 12px;
-    -webkit-transition: -webkit-transform .4s;
-    transition: transform .4s;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .media-box img:hover {
-    -webkit-transform: scale(1.03);
-    transform: scale(1.03);
+    /* تبسيط التكبير ليكون أخف */
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 /* Console */
@@ -215,13 +223,13 @@ button {
     font-weight: 600;
     cursor: pointer;
     outline: none;
-    -webkit-transition: background .35s, box-shadow .35s, -webkit-transform .35s;
-    transition: background .35s, box-shadow .35s, transform .35s;
-    box-shadow:
-        0 0 10px #0078ff,
-        0 0 20px rgba(0, 120, 255, .4);
+    -webkit-transition: background 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 10px #0078ff, 0 0 20px rgba(0, 120, 255, .4);
+    /* حركة طفو تبدأ متأخرة قليلاً للتنوع */
     -webkit-animation: float 4s ease-in-out 1s infinite;
     animation: float 4s ease-in-out 1s infinite;
+    will-change: transform;
 }
 
 button:hover,
@@ -229,53 +237,30 @@ button:focus {
     background: #0099ff;
     border-color: #00ffff;
     outline: none;
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused;
-    -webkit-transform: translateY(-3px);
-    transform: translateY(-3px);
-    box-shadow:
-        0 0 20px #00ffff,
-        0 0 40px rgba(0, 180, 255, .9);
+    /* الحل الجذري: إيقاف الحركة المستمرة تماماً عند التفاعل */
+    -webkit-animation-play-state: paused !important;
+    animation-play-state: paused !important;
+    /* رفع الزر قليلاً بشكل ثابت */
+    -webkit-transform: translateY(-4px) !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 0 20px #00ffff, 0 0 40px rgba(0, 180, 255, .9);
 }
 
 button:active {
-    -webkit-transform: scale(.97);
-    transform: scale(.97);
+    /* تأثير الضغط */
+    -webkit-transform: translateY(-2px) scale(0.97) !important;
+    transform: translateY(-2px) scale(0.97) !important;
 }
 
-button:disabled {
-    opacity: .5;
-    cursor: not-allowed;
-    box-shadow: none;
+/* --- تبسيط حركه الطفو (Float Animation) للأداء --- */
+@-webkit-keyframes float {
+    0%, 100% { -webkit-transform: translateY(0px); }
+    50% { -webkit-transform: translateY(-5px); } /* تقليل المسافة قليلاً */
 }
 
-/* Shine Animation */
-
-button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 70%;
-    height: 100%;
-    -webkit-transform: skewX(-25deg);
-    transform: skewX(-25deg);
-    background: -webkit-linear-gradient(left, transparent, rgba(255, 255, 255, .65), transparent);
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, .65), transparent);
-}
-
-button:hover::before,
-button:focus::before {
-    -webkit-animation: shine .9s;
-    animation: shine .9s;
-}
-
-@-webkit-keyframes shine {
-    100% { left: 160%; }
-}
-
-@keyframes shine {
-    100% { left: 160%; }
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); } /* تقليل المسافة قليلاً */
 }
 
 /* Radio Option Styling & Focus */
